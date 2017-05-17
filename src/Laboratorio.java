@@ -55,6 +55,8 @@ public class Laboratorio {
 		System.out.println("Deseja adicionar alguma informação ao projeto \"" + proj.getTitulo() + "\"? (Sim/Não)");
 		str = ent_string.nextLine();
 		if(str.equals("não") || str.equals("Não")){
+			projetos.add(proj);
+			Collections.sort(projetos);
 			return;
 		}
 		
@@ -114,12 +116,12 @@ public class Laboratorio {
 					break;
 					
 				default:
-					System.out.println("Opção Inválida!");
+					System.err.println("Opção Inválida!");
 				}
 				break;
 				
 			default:
-				System.out.println("Opção inválida. Tente novamente.");
+				System.err.println("Opção inválida. Tente novamente.");
 			}
 			System.out.println("Deseja adicionar outra informação ao projeto \"" + proj.getTitulo() + "\"? (Sim/Não)");
 			str = ent_string.nextLine();
@@ -134,7 +136,7 @@ public class Laboratorio {
 	
 	public void editarProjeto(Scanner entrada, Scanner ent_string){
 		if(projetos.isEmpty()){
-			System.out.println("Não existem projetos cadastrados");
+			System.err.println("Não existem projetos cadastrados");
 			return;
 		}
 		System.out.println("Edição de projetos");
@@ -161,7 +163,7 @@ public class Laboratorio {
 			case 1:
 				System.out.println("Apenas o gerente pode modificar o status de um projeto");
 				if(proj.getGerente() == null){
-					System.out.println("Esse projeto não possui um gerente cadastrado\n"
+					System.err.println("Esse projeto não possui um gerente cadastrado\n"
 							+ "Cadastre um novo professor e tente novamente");
 					break;
 				}
@@ -175,7 +177,7 @@ public class Laboratorio {
 						}
 						else if(proj.getStatus() == 'a'){
 							if(proj.getProducao().isEmpty()){
-								System.out.println("Não existem publicações associadas a esse projeto.\n"
+								System.err.println("Não existem publicações associadas a esse projeto.\n"
 										+ "Projetos só podem ser concluídos depois de possuírem publicações associadas");
 								break;
 							}
@@ -183,16 +185,16 @@ public class Laboratorio {
 							System.out.println("Status do projeto alterado de \"Em andamento\" para \"Concluído\"");
 						}
 						else{
-							System.out.println("Esse projeto já foi concluído. Por favor, tente novamente com um projeto em aberto.");
+							System.err.println("Esse projeto já foi concluído. Por favor, tente novamente com um projeto em aberto.");
 						}
 					}
 					else{
-						System.out.println("É necessário que todas as informações básicas "
+						System.err.println("É necessário que todas as informações básicas "
 								+ "estejam preenchidas para que o status do projeto possa ser alterado");
 					}
 				}
 				else{
-					System.out.println("Senha incorreta.");
+					System.err.println("Senha incorreta.");
 				}
 				break;
 				
@@ -242,7 +244,7 @@ public class Laboratorio {
 						break;
 						
 					default:
-						System.out.println("Opção inválida. Tente novamente.");
+						System.err.println("Opção inválida. Tente novamente.");
 					}
 					System.out.println("Deseja adicionar outra informação ao projeto? (Sim/Não)");
 					str = ent_string.nextLine();
@@ -253,7 +255,7 @@ public class Laboratorio {
 				break;
 				
 			default:
-				System.out.println("Opção Inválida. Por favor tente novamente.");
+				System.err.println("Opção Inválida. Por favor tente novamente.");
 			}
 			
 			System.out.println("Deseja editar outra informação desse projeto? (Sim/Não)");
@@ -270,13 +272,13 @@ public class Laboratorio {
 		int count_e = 0, count_a = 0, count_c = 0;
 		
 		if(colaboradores.isEmpty()){
-			System.out.println("Não existem colaboradores cadastrados");
+			System.err.println("Não existem colaboradores cadastrados");
 		}
 		else{
 			System.out.println("Número de colaboradores: " + colaboradores.size());
 		}
 		if(projetos.isEmpty()){
-			System.out.println("Não existem projetos cadastrados");
+			System.err.println("Não existem projetos cadastrados");
 		}
 		else{
 			for(int i = 0; i < projetos.size(); i++){
@@ -296,7 +298,7 @@ public class Laboratorio {
 			System.out.println("Número total de projetos: " + projetos.size());
 		}
 		if(producao.isEmpty()){
-			System.out.println("Não foram feitas publicações");
+			System.err.println("Não foram feitas publicações");
 		}
 		else{
 			System.out.println("Produção acadêmica: ");
@@ -309,7 +311,7 @@ public class Laboratorio {
 	public void consultarColaborador(Scanner entrada){
 		System.out.println("Consulta por colaborador: ");
 		if(colaboradores.isEmpty()){
-			System.out.println("Não existem colaboradores cadastrados");
+			System.err.println("Não existem colaboradores cadastrados");
 			return;
 		}
 		int aux;
@@ -335,7 +337,7 @@ public class Laboratorio {
 	public void consultarProjeto(Scanner entrada){
 		System.out.println("Consulta por projeto:");
 		if(projetos.isEmpty()){
-			System.out.println("Não existem projetos cadastrados");
+			System.err.println("Não existem projetos cadastrados");
 			return;
 		}
 		int aux;
@@ -415,7 +417,7 @@ public class Laboratorio {
 			}
 			else{
 				if(projetos.isEmpty()){
-					System.out.println("Não existem projetos cadastrados");
+					System.err.println("Não existem projetos cadastrados");
 					break;
 				}
 				System.out.println("Escolha o projeto ao qual essa publicação será associada");
@@ -430,7 +432,7 @@ public class Laboratorio {
 			
 		case 2:
 			if(projetos.isEmpty()){
-				System.out.println("Não existem projetos cadastrados");
+				System.err.println("Não existem projetos cadastrados");
 				break;
 			}
 			System.out.println("Escolha o projeto ao qual essa publicação será associada");
@@ -448,7 +450,7 @@ public class Laboratorio {
 			break;
 			
 		default:
-			System.out.println("Opção inválida!");
+			System.err.println("Opção inválida!");
 		}
 		Collections.sort(producao);
 	}

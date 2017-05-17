@@ -120,16 +120,6 @@ public class Projeto implements Comparable<Projeto>{
 		mes_inicio = entrada.nextInt();
 		System.out.println("Digite o ano de início do projeto:");
 		ano_inicio = entrada.nextInt();
-		if(mes_inicio > 12){
-			System.out.println("Data inválida");
-			dia_inicio = 0;
-			mes_inicio = 0;
-			ano_inicio = 0;
-			return;
-		}
-		if(mes_inicio == 2){
-			
-		}
 	}
 	
 	public void modificarDTermino(Scanner entrada){
@@ -174,7 +164,7 @@ public class Projeto implements Comparable<Projeto>{
 	public void addColaborador(Colaborador col){
 		for(int i = 0; i < participantes.size(); i++){
 			if(participantes.get(i).equals(col)){
-				System.out.println("Esse colaborador já está associado a esse projeto");
+				System.err.println("Esse colaborador já está associado a esse projeto");
 				return;
 			}
 		}
@@ -213,7 +203,7 @@ public class Projeto implements Comparable<Projeto>{
 			break;
 			
 		default:
-			System.out.println("Opção inválida. Tente novamente.");
+			System.err.println("Opção inválida. Tente novamente.");
 		}
 		
 		if(novo != null){
@@ -284,7 +274,7 @@ public class Projeto implements Comparable<Projeto>{
 
 	public void printProducao(){
 		if(producao.isEmpty()){
-			System.out.println("Não existem publicações associadas a esse projeto");
+			System.err.println("Não existem publicações associadas a esse projeto");
 			return;
 		}
 		for(int i = 0; i < producao.size(); i++){
